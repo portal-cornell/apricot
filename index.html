@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="APRICOT: Active Preference Learning and Constraint-Aware Task Planning with LLMs">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>APRICOT: Active Preference Learning and Constraint-Aware Task Planning with LLMs</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QR88D4MJ0H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-QR88D4MJ0H');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/icon.jpg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">APRICOT: Active Preference Learning and <br> Constraint-Aware Task Planning with LLMs</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://lunay0yuki.github.io/">Yuki (Huaxiaoyue) Wang*</a>,</span>
+            <span class="author-block">
+                <a href="https://portal.cs.cornell.edu/people/">Nathaniel Chin</a>,</span>
+            <span class="author-block">
+                <a href="https://portal.cs.cornell.edu/people/">Gonzalo Gonzalez-Pumariega</a>,</span>
+            <span class="author-block">
+                <a href="https://portal.cs.cornell.edu/people/">Xiangwan Sun</a>,</span>
+            <span class="author-block">
+                <a href="https://portal.cs.cornell.edu/people/">Neha Sunkara</a>,</span>
+            <span class="author-block">
+                <a href="https://portal.cs.cornell.edu/people/">Maximus Adrian Pace</a>,</span>
+            <span class="author-block">
+                <a href="https://web.stanford.edu/~bohg/">Jeannette Bohg</a>
+            <span class="author-block">
+                <a href="https://www.sanjibanchoudhury.com/">Sanjiban Choudhury</a>            
+          </div>
+
+          <!-- write Cornell Univerity in red next line -->
+          <br>
+          <!-- <hr style="height:0px; visibility:hidden;" /> -->
+          <img src="./static/images/cornell-university-logo.png" width="40%"></img>
+          <!-- <div class="is-size-3 publication-authors">
+            <span class="author-block">Cornell University</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2402.18796.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2402.18796"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- twitter Link. -->
+              <span class="link-block">
+                <a href="https://twitter.com/sanjibac/status/1764670269526847517"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-x-twitter"></i>
+                  </span>
+                  <span>Summary</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- reduce line spacing below -->
+
+
+
+<!-- Display a big video next -->
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-3" >
+            MOSAIC combines large pre-trained models for general tasks with task-specific modules for collaborative cooking
+          </h1>
+          <br>
+          <div class="publication-video">
+              <!-- add a link to youtube video using iframe -->
+
+              <!-- <video poster="" id="shiba" controls playsinline> -->
+                <iframe width="420" height="240" src="https://www.youtube.com/embed/jKp-RqNlW90?si=I23I9oWz2yOCACWf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <!-- <source src="./static/videos/e2e.mp4" type="video/mp4"> -->
+              <!-- </video>  -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body" has-text-centered>
+    <div class="container" >
+      <div class="column has-text-centered">
+        <h2 class="title is-3">MOSAIC enables flexibility, recoverability, and safety</h2>
+        <br>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/recoverability.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/safety.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/flexibility.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/recoverability.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/safety.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/flexibility.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br>
+      
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Dataset -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Interactive Robot Skills</h2>
+        <!-- <div class="publication-video"> -->
+          
+          
+          <img src="./static/images/skills.png">
+          <br>
+          <br>
+          <p style="text-align: left;">
+            We evaluate MOSAIC on multiple recipes, involving a range of robot skills that interact with the human user and everyday objects.
+          </p>
+            
+        <!-- </div> -->
+      </div>
+    </div>
+    <br>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">System Overview</h2>
+        <!-- <div class="publication-video"> -->
+          <!-- align left -->
+          <img src="./static/images/system.png">
+          <br>
+          <br>
+          <!-- write three bullet points next using <ul> -->
+
+          <li style="text-align: left;"> <b>Interactive Task Planner</b>: Communicates with the user via natural language to decide on a recipe, delegate subtasks, 
+            and monitors recipe progress. </li>
+          <li style="text-align: left;"> <b>Human Motion Forecasting</b>: Extracts and 
+            converts the human's 2D post to 3D coordinates, which it uses to 
+            predict future human motion. </li>
+          <li style="text-align: left;"> <b>Visuomotor Skill</b>: Produces a 3D grasp pose given image and language input, 
+            then outputs action conditioned on the grasp pose and 
+            predicted human motion.
+
+          
+
+          <!-- <p style="text-align: left;">
+            The <em>Interactive Task Planner</em> module communicates with the user via natural language to decide on a recipe. 
+            It assigns subtasks to each robot accordingly. The <em>Human Motion Forecasting</em> extracts and converts the 
+            human's 2D post to 3D coordinates, which it uses to predict future human 
+            motion. Simultaneously, a VLM takes image and language as input and 
+            produces a 3D grasp pose around the object of interest. Combined, all 
+            three are taken by the execution policy of the 
+            <em>Visuomotor Skill</em> module to produce a final robot action. 
+          </p>  -->
+            
+        <!-- </div> -->
+      </div>
+    </div>
+    <br>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Interactive Task Planning</h2>
+        <!-- <div class="publication-video"> -->
+          <!-- align left -->
+          
+          
+          
+          <img src="./static/images/tp_demo.gif">
+          <br>
+          <br>
+          <p style="text-align: left;">
+            <b> Embedding LLMs within a behavior tree. </b> LLMs can handle users natural language input, but its output can be error-prone and unconstrained. MOSAIC overcomes this challenges by embedding LLMs within a behavior tree. Each tree node partitions the LLM reasoning process, thereby reducing the complexity and potential error rate.
+          </p>
+            
+        <!-- </div> -->
+      </div>
+    </div>
+    <br>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Human Motion Forecasting</h2>
+        <!-- <div class="publication-video"> -->
+          <!-- align left -->
+          
+          
+          
+          <!-- <img src="./static/images/hmf.png"> -->
+          <img src="./static/images/HMF_video.gif"
+          <br>
+          <br>
+          <p style="text-align: left;">
+            <b>Real-time Forecasting and Planning.</b> 
+            Given an RGB-D scene image, a pose detector extracts the human's 2D pose, which is converted to 3D coordinates using the camera's depth map. The motion forecaster predicts future human motion, which is used by the robot to plan actions.
+          </p>
+            
+        <!-- </div> -->
+      </div>
+    </div>
+    <br>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Visuomotor Skills</h2>
+        <!-- <div class="publication-video"> -->
+          <!-- align left -->
+          
+          <h3 class="title is-5">Interactive Demo: Ask the robot to pick an object of your choice </h2>
+          <div id="interactive-section">
+            <!-- change background-color to blue, red, yellow -->
+            <button id="gif1-button" class="button-salt">Pick Salt</button>
+            <button id="gif2-button" class="button-pepper">Pick Pepper</button>
+            <button id="gif3-button" class="button-relish">Pick Relish</button>
+            <br> <br>
+            <img id="gif-display" src="static/images/vs_approach/pepper.gif" alt="GIF will display here">
+          </div>
+          
+          <script>
+            document.getElementById('gif1-button').addEventListener('click', function() {
+            document.getElementById('gif-display').src = 'static/images/vs_approach/salt.gif';
+          });
+
+          document.getElementById('gif2-button').addEventListener('click', function() {
+            document.getElementById('gif-display').src = 'static/images/vs_approach/pepper.gif';
+          });
+
+          document.getElementById('gif3-button').addEventListener('click', function() {
+            document.getElementById('gif-display').src = 'static/images/vs_approach/relish.gif';
+          });
+          </script>
+          <!-- <img src="./static/images/vs_approach_pic.png"> -->
+          <br>
+          <br>
+          <p style="text-align: left;">
+            <b>VLMs for perception and RL for action prediction.</b> 
+            At train time, we design a simulator that mimics the real environment. Given the goal position, an RL agent is trained to predict actions under a reward function that enforces environment constraints.
+<br> <br> At inference time, taking an image and natural language as input, the visuomotor module uses OWL-ViT to output a bounding box around the object of interest. This bounding box is passed into FastSAM, which segments out the object and back-projects it onto a point cloud to produce a 3D goal pose. This 3D goal pose is used by the trained RL agent to produce the final actions.
+          </p>
+
+          
+          <!-- Create an interactive section below with three
+             buttons corresponding to playing of one of three gifs -->
+          
+          
+        <!-- </div> -->
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">End-to-End Evaluation</h2>
+        <!-- <div class="publication-video"> -->
+          <!-- align left -->
+          
+          
+          
+          <!-- <img src="./static/images/hmf.png"> -->
+          <img src="./static/images/e2e_result.png">
+          <br>
+          <br>
+          <p style="text-align: left;">
+            <b>End-to-end results.</b> 
+            We test our end-to-end system on 6 recipes, where each recipe is tested through 10 trials. 
+            Each recipe contains various subtasks involving different robot skills. 
+            We report the number of trials that are completed without any errors and the 
+            individual subtask completion rate. MOSAIC is able to complete 41/60 tasks with an average subtask completion rate 
+            of 91.6%. As each module has sub-modules, each with a clear 
+            input/output contract, localizing an error is easily automated. 
+            We use this to cluster failures into the 5 clear categories.
+          </p>
+            
+        <!-- </div> -->
+      </div>
+    </div>
+    
+
+    <!-- <br> -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column" id="Paper">
+        <h2 class="title is-3">Paper</h2>
+    <div class="paper-thumbnail">
+        <a href="https://arxiv.org/abs/2402.18796.pdf">
+            <img class="layered-paper-big" width="100%" src="./resources/preview_mosaic.png" alt="Paper thumbnail"/>
+        </a>
+    </div>
+    <div class="paper-info">
+        <!-- <a href="https://openreview.net/forum?id=rxlokRzNWRq"><h3>ManiCast: Collaborative Manipulation with Cost-Aware Human Forecasting</h3></a>
+        <p>Kushal Kedia, Prithwish Dan, Atiksh Bhardwaj, Sanjiban Choudhury</p> -->
+        <h3 class="title is-4" style="text-align: center;">BibTex</h3>
+<pre style="overflow-x:hidden; text-wrap:wrap; white-space: pre-wrap;"><code>@misc{wang2024mosaic,
+  title={MOSAIC: A Modular System for Assistive and Interactive Cooking}, 
+  author={Huaxiaoyue Wang and Kushal Kedia and Juntao Ren and Rahma Abdullah and Atiksh Bhardwaj and Angela Chao and Kelly Y Chen and Nathaniel Chin and Prithwish Dan and Xinyi Fan and Gonzalo Gonzalez-Pumariega and Aditya Kompella and Maximus Adrian Pace and Yash Sharma and Xiangwan Sun and Neha Sunkara and Sanjiban Choudhury},
+  year={2024},
+  eprint={2402.18796},
+  archivePrefix={arXiv},
+  primaryClass={cs.RO}
+}   
+</code></pre> 
+    </div>
+    </div>
+  <!-- <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{
+    kedia2023manicast,
+    title={ManiCast: Collaborative Manipulation with Cost-Aware Human Forecasting},
+    author={Kushal Kedia and Prithwish Dan and Atiksh Bhardwaj and Sanjiban Choudhury},
+    booktitle={7th Annual Conference on Robot Learning},
+    year={2023},
+    url={https://openreview.net/forum?id=rxlokRzNWRq}
+}</code></pre>
+  </div> -->
+</div>
+</section>
+
+<br>
+
+
+<footer class="footer">
+  <div class="container">
+    <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            Website template borrowed from <a
+              href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
